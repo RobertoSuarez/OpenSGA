@@ -58,6 +58,8 @@ export class HomeworkService {
       return homeworks;
     });
 
+    await browser.close();
+
     return homeworks;
   }
 }
