@@ -1,0 +1,11 @@
+version: '3'
+services:
+  opensga:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      SGA_USERNAME: rsuarezl
+      SGA_PASSWORD: Inkdrop1999

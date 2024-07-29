@@ -7,10 +7,20 @@ export class HomeworkService {
   constructor(private _configService: ConfigService) {}
 
   async getHomework() {
+    const platform = process.platform;
+
+    let path = '';
+    if (platform === 'win32') {
+      path = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
+    } else if (platform === 'linux') {
+      path = '/usr/bin/google-chrome';
+    }
     const browser = await launch({
       headless: true,
-      args: ['--start-maximized'],
+      executablePath: path,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
     });
+
     const page = await browser.newPage();
 
     await page.goto('https://sga.uteq.edu.ec/loginsga', {
