@@ -1,4 +1,4 @@
-FROM node:20.15 AS build
+FROM node:lts-slim AS build
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
@@ -11,24 +11,18 @@ RUN apt-get update && apt-get install gnupg wget -y && \
 
 WORKDIR /app/build
 
-COPY package*.json ./
+COPY . .
 
 RUN npm i
-
-COPY . .
 
 RUN npm run build
 
 EXPOSE 3000
 
-FROM build AS final
+FROM build AS production
 
 WORKDIR /app
 
 COPY --from=build /app/build .
 
-# Exponer el puerto del servidor
-EXPOSE 3000
-
-# Inicia el servidor
-CMD [ "npm", "run", "start:prod" ]
+CMD ["node", "dist/main"]

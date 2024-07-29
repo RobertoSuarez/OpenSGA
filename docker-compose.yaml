@@ -7,5 +7,5 @@ services:
     ports:
       - 3000:3000
     environment:
-      SGA_USERNAME: rsuarezl
-      SGA_PASSWORD: Inkdrop1999
+      SGA_USERNAME: ${SGA_USERNAME}
+      SGA_PASSWORD: ${SGA_PASSWORD}

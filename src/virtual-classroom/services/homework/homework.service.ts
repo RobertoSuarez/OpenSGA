@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { launch } from 'puppeteer';
+import { launch } from 'puppeteer-core';
 
 @Injectable()
 export class HomeworkService {
