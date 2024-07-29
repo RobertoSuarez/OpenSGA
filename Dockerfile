@@ -1,4 +1,4 @@
-FROM node:slim AS build
+FROM node:20.15 AS build
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
