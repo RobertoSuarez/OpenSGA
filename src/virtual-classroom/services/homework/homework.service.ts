@@ -17,7 +17,6 @@ export class HomeworkService {
     }
     const browser = await launch({
       headless: true,
-      executablePath: path,
       args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
     });
 
