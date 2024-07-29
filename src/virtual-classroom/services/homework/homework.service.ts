@@ -13,10 +13,11 @@ export class HomeworkService {
     if (platform === 'win32') {
       path = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
     } else if (platform === 'linux') {
-      path = '/usr/bin/google-chrome';
+      path = '/usr/bin/google-chrome-stable';
     }
     const browser = await launch({
       headless: true,
+      executablePath: path,
       args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
     });
 
